@@ -1,0 +1,21 @@
+{
+	"sceneName":	"overWorld",
+	"worldSize":	{ "x": 8000, "y": 6000},
+	"skyArea":	{
+		"topLeft": { "x": 0, "y": 0},
+		"bottomRight": { "x": 0, "y": 0}
+	},
+	"groundArea":	{
+		"topLeft": { "x": 0, "y": 0},
+		"bottomRight": { "x": 8000, "y": 6000}
+	},
+	"bottomOffset":	{
+		"topLeft": { "x": 8000, "y": 6000},
+		"bottomRight": { "x": 8000, "y": 6000}
+	}
+}
+
+
+	
+	
+

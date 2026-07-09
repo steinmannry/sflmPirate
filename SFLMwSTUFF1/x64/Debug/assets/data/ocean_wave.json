@@ -1,0 +1,9 @@
+{
+	"texture": "ocean",
+	"frameWidth": 64,
+	"frameHeight": 64,
+	"frames": 4,
+	"frameTime": 0.10,
+	"row": 0,
+	"loop": true
+}

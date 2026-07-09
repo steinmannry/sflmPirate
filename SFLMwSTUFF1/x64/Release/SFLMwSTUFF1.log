@@ -1,0 +1,16 @@
+﻿  animation.cpp
+  animationController.cpp
+  animationData.cpp
+  engine.cpp
+  jsonLoader.cpp
+  main.cpp
+  scene.cpp
+  textureManager.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 1783 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  SFLMwSTUFF1.vcxproj -> C:\Users\stein\source\repos\SFLMwSTUFF1\x64\Release\SFLMwSTUFF1.exe
+  C:\Users\stein\source\repos\SFLMwSTUFF1\assets\data\ocean_wave.json
+  C:\Users\stein\source\repos\SFLMwSTUFF1\assets\textures\waves2.png
+  2 File(s) copied

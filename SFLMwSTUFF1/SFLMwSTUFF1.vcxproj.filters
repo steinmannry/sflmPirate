@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\maps">
+      <UniqueIdentifier>{2f6016f0-cb24-4e6b-9dfa-0defaebd7d51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\data">
+      <UniqueIdentifier>{0950fe63-f0ba-48ca-b6df-7dd4b169f729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\animations">
+      <UniqueIdentifier>{7b84d492-fb82-40d1-b0de-d7f4a763940b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\player">
+      <UniqueIdentifier>{8479acf8-6886-4117-8731-bb2e2ac01f56}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="jsonLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="animationData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="animationController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="textureManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="boat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="inventory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="animationLibrary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="actor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tileset.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="townMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ocean.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="boat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inventory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="map.h">
+      <Filter>Header Files\maps</Filter>
+    </ClInclude>
+    <ClInclude Include="townMap.h">
+      <Filter>Header Files\maps</Filter>
+    </ClInclude>
+    <ClInclude Include="animation.h">
+      <Filter>Header Files\animations</Filter>
+    </ClInclude>
+    <ClInclude Include="animationController.h">
+      <Filter>Header Files\animations</Filter>
+    </ClInclude>
+    <ClInclude Include="animationData.h">
+      <Filter>Header Files\animations</Filter>
+    </ClInclude>
+    <ClInclude Include="animationLibrary.h">
+      <Filter>Header Files\animations</Filter>
+    </ClInclude>
+    <ClInclude Include="area.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="jsonLoader.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneData.h">
+      <Filter>Header Files\maps</Filter>
+    </ClInclude>
+    <ClInclude Include="tileset.h">
+      <Filter>Header Files\maps</Filter>
+    </ClInclude>
+    <ClInclude Include="textureManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="random.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="actor.h">
+      <Filter>Header Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>Header Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="playerPawn.h">
+      <Filter>Header Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="stats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

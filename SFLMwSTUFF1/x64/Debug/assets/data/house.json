@@ -1,0 +1,68 @@
+{
+	"sceneName":	"house",
+	"mapType":	"town",
+	"worldSize":	{ "x": 1000, "y": 1000},
+
+	"skyArea":	{
+		"topLeft": { "x": 0, "y": 0},
+		"bottomRight": { "x": 0, "y": 0}
+	},
+
+	"groundArea":	{
+		"topLeft": { "x": 0, "y": 0},
+		"bottomRight": { "x": 1000, "y": 1000}
+	},
+
+	"bottomOffset":	{
+		"topLeft": { "x": 8000, "y": 6000},
+		"bottomRight": { "x": 1000, "y": 1000}
+	},
+
+
+	"skyGradient": {
+		"enabled": false
+	},
+
+
+	"groundGradient":  {
+		"enabled": true,
+		"topLeft": [34, 139, 34],
+		"topRight": [34, 139, 34],
+		"bottomLeft": [34, 139, 34],
+		"bottomRight": [34, 139, 34]
+	},
+	
+
+	"objects":{
+		"buildings":{
+			"texture": "house",
+			"tileWidth": 128,
+			"tileHeight": 128,
+			"variantCount": 1,
+			"collision": true
+			},		
+
+	
+		"wildflowers":{
+			"texture": "wildflowers",
+			"tileWidth": 32,
+			"tileHeight": 32,
+			"variantCount": 4,
+			"collision": false
+			}
+		},
+
+		"objectInstances": [
+			{ "type": "buildings",  "variant": 0, "x": 400,  "y": 300},
+			{ "type": "wildflowers",  "variant": 0, "x": 400,  "y": 430},
+			{ "type": "wildflowers",  "variant": 1, "x": 432,  "y": 430},
+			{ "type": "wildflowers",  "variant": 2, "x": 502,  "y": 430},
+			{ "type": "wildflowers",  "variant": 3, "x": 530,  "y": 430}
+	]
+			
+}
+
+
+	
+	
+

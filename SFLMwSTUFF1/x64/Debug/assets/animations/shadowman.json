@@ -1,0 +1,11 @@
+{
+	"texture": "shadowman",
+	"path": "shadowman.png",
+	"frameWidth": 64,
+	"frameHeight": 64,
+	"frames": 4,
+	"frameTime": 0.25,
+	"row": 0,
+	"loop": true,
+	"reverse": false
+}
