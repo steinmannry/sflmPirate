@@ -14,6 +14,7 @@ public:
 	void update(float dt) override;
 	void draw(sf::RenderWindow& window) override;
 	sf::Vector2f getPos() const override;
+	void setPos(sf::Vector2f pos) override;
 	void setWorldBounds(Area& a) override;
 	void handleInput() override;
 	sf::FloatRect pawnBounds() override;

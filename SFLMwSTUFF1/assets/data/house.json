@@ -18,6 +18,7 @@
 		"bottomRight": { "x": 1000, "y": 1000}
 	},
 
+	"spawnPos": {"x": 80, "y": 200},
 
 	"skyGradient": {
 		"enabled": false
@@ -49,15 +50,27 @@
 			"tileHeight": 32,
 			"variantCount": 4,
 			"collision": false
-			}
-		},
+			},
 
+		"sign":{
+			"texture": "sign",
+			"tileWidth": 32,
+			"tileHeight": 32,
+			"variantCount": 1,
+			"collision": false,
+			"eventType": "sceneChange",
+			"triggerType": "proximity",
+			"targetScene": "house2.json"
+		}
+
+	},
 		"objectInstances": [
 			{ "type": "buildings",  "variant": 0, "x": 400,  "y": 300},
 			{ "type": "wildflowers",  "variant": 0, "x": 390,  "y": 410},
 			{ "type": "wildflowers",  "variant": 1, "x": 422,  "y": 410},
 			{ "type": "wildflowers",  "variant": 2, "x": 492,  "y": 410},
-			{ "type": "wildflowers",  "variant": 3, "x": 520,  "y": 410}
+			{ "type": "wildflowers",  "variant": 3, "x": 520,  "y": 410},
+			{ "type": "sign", "variant": 0, "x": 20, "y": 200}
 	]
 			
 }

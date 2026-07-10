@@ -6,8 +6,6 @@
 
 TownMap::TownMap(const std::vector<sf::Sprite>& objectSprites, const std::vector<ObjectInstance>& instances, const std::unordered_map<std::string, ObjectData>& data)
 	: objectSprites(objectSprites), objInst(instances), objectData(data){
-	
-
 	//buildingTileset = &tilesets.at("buildings");
 	//others
 	//auto& info = tilesetInfo.at("buildings");

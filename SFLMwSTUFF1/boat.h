@@ -13,6 +13,7 @@ public:
 	void draw(sf::RenderWindow& window);
 	void handleInput() override;
 	sf::Vector2f getPos() const override;
+	void setPos(sf::Vector2f pos) override { sprite.setPosition(pos); }
 	sf::FloatRect pawnBounds() override;
 	const sf::Sprite& getSprite() const { return sprite; }
 	//void setPos(sf::Vector2f pos) { sprite.setPosition(pos); }

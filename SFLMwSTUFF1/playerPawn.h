@@ -13,6 +13,7 @@ public:
 	virtual void update(float dt) = 0;
 	virtual void draw(sf::RenderWindow& window) = 0;
 	virtual sf::Vector2f getPos() const = 0;
+	virtual void setPos(sf::Vector2f pos) = 0;
 	virtual void handleInput() = 0;
 	virtual void setWorldBounds(Area& a) = 0;
 	virtual sf::FloatRect pawnBounds() = 0;

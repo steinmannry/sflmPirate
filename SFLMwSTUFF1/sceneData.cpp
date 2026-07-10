@@ -10,6 +10,11 @@ SceneData SceneData::fromJson(const json& j) {
 	data.groundArea = areaFromJson(j["groundArea"]);
 	data.bottomOffset = areaFromJson(j["bottomOffset"]);
 
+	if (j.contains("spawnPos")) {
+		data.spawnPos.x = j["spawnPos"]["x"];
+		data.spawnPos.y = j["spawnPos"]["y"];
+	}
+
 	if (j.contains("skyGradient")) {
 		const auto& sg = j["skyGradient"];
 		data.skyGradient.enabled = sg.value("enabled", false);
@@ -46,7 +51,7 @@ SceneData SceneData::fromJson(const json& j) {
 		for (auto& inst : j["objectInstances"]) {
 			ObjectInstance obj;
 			obj.type = inst["type"];
-			obj.variantCount = inst.value("variant", 0);
+			obj.variant = inst.value("variant", 0);
 			obj.x = inst["x"];
 			obj.y = inst["y"];
 			data.objectInstances.push_back(obj);
@@ -60,6 +65,9 @@ SceneData SceneData::fromJson(const json& j) {
 				info.tileHeight = ts["tileHeight"];
 				info.variantCount = ts["variantCount"];
 				info.collision = ts["collision"];
+				info.eventType = parseEventType(ts.value("eventType", "None"));
+				info.trigger = parseTriggerType(ts.value("trigger", "proximity"));
+				info.targetScene = ts.value("targetScene", "");
 				data.objects[key] = info;
 			}
 		}
@@ -73,5 +81,21 @@ MapType SceneData::parseMapType(const std::string& s) {
 	if (s == "battle") return MapType::Battle;
 
 	return MapType::OverWorld; //default
+}
+
+EventType SceneData::parseEventType(const std::string& s) {
+	if (s == "dialog") return EventType::Dialog;
+	if (s == "sceneChange") return EventType::SceneChange;
+	if (s == "loot") return EventType::Loot;
+	if (s == "heal") return EventType::Heal;
+	if (s == "statBoost") return EventType::StatBoost;
+	if (s == "statPenalty") return EventType::StatPenalty;
+	return EventType::None;
+}
+
+TriggerType SceneData::parseTriggerType(const std::string& s) {
+	if (s == "proximity") return TriggerType::Proximity;
+	if (s == "button") return TriggerType::Button;
+	return TriggerType::Proximity; 
 }
 // OverWorld, Water, Town, Land, Battle, NauticalBattle };

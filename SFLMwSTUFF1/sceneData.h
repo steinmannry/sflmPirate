@@ -5,6 +5,8 @@
 #include "jsonLoader.h"
 
 enum class MapType {OverWorld, Water, Town, Land, Battle, NauticalBattle};
+enum class EventType {None, Dialog, SceneChange, Loot, Heal, StatBoost, StatPenalty};
+enum class TriggerType {Proximity, Button};
 
 struct TilesetInfo {
 	std::string textureName;
@@ -14,7 +16,7 @@ struct TilesetInfo {
 
 struct ObjectInstance {
 	std::string type;
-	int variantCount;
+	int variant;
 	float x;
 	float y;	
 };
@@ -25,6 +27,9 @@ struct ObjectData {
 	int tileHeight;
 	int variantCount;
 	bool collision = false;
+	EventType eventType = EventType::None;
+	TriggerType trigger = TriggerType::Proximity;
+	std::string targetScene;
 };
 
 struct GradientData {
@@ -43,7 +48,8 @@ struct SceneData {
 	Area groundArea;
 	Area bottomOffset;
 	GradientData skyGradient;
-	GradientData groundGradient;	
+	GradientData groundGradient;
+	sf::Vector2f spawnPos;
 
 	//std::unordered_map<std::string, TilesetInfo> tilesets;
 
@@ -69,7 +75,8 @@ struct SceneData {
 	}
 
 	static MapType parseMapType(const std::string& s);
-
+	static EventType parseEventType(const std::string& s);
+	static TriggerType parseTriggerType(const std::string& s);
 	//wind struct
 	//paralax
 	//player and enemy spawn pos's

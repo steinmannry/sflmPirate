@@ -115,3 +115,7 @@ void Actor::boundsCheck() {
 
 	sprite.setPosition(pos);
 }
+
+void Actor::setPos(sf::Vector2f pos) {
+	sprite.setPosition(pos);
+}

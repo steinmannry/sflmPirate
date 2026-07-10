@@ -8,6 +8,9 @@
 
 Scene::Scene(TextureManager& texture, AnimationLibrary& al, const SceneData& sd)
 	: textures(texture), animations(al), skyGradient(sf::Quads, 4), groundGradient(sf::Quads, 4),
+	mapType(sd.mapType),
+	objInstances(sd.objectInstances),
+	objects(sd.objects),
 	worldSize(sd.worldSize),
 	skyArea(sd.skyArea),
 	groundArea(sd.groundArea),
@@ -18,8 +21,8 @@ Scene::Scene(TextureManager& texture, AnimationLibrary& al, const SceneData& sd)
 	camera.setSize(800.f, 600.f);
 	
 	//buildTilesets(sd);
-	buildObjects(sd);
-	buildMap(sd);
+	buildObjects();
+	buildMap();
 
 	std::cout << objectSprites.size() << "objSprite size\n";
 
@@ -66,26 +69,30 @@ void Scene::draw(sf::RenderWindow& window, PlayerPawn* p) {
 	//if (battleMode)draw more crap
 }
 
-void Scene::buildMap(const SceneData& sd) {
-	switch (sd.mapType) {
+void Scene::buildMap() {
+	switch (mapType) {
 	case MapType::OverWorld:
 		//map = std::make_unique<OverworldMap>(tilesets, sd);
 		break;
 
 	case MapType::Town:
-		map = std::make_unique<TownMap>(objectSprites, sd.objectInstances, sd.objects);
+		map = std::make_unique<TownMap>(objectSprites, objInstances, objects);
 		//activePawn = new Actor(animations, textures.get("shadowman"));
 		break;
 	}
 }
 
-void Scene::buildObjects(const SceneData& sd) {
+void Scene::buildObjects() {
 	objectSprites.clear();
-	objectSprites.reserve(sd.objectInstances.size());
-	std::cout << objectSprites.size() << " objectsprite size\n";
-	for (const auto& inst : sd.objectInstances) {
+	objectSprites.reserve(objInstances.size());
+	for (const auto& inst : objInstances) {
 		//lookup definition
-		const auto& type = sd.objects.at(inst.type);
+		auto it = objects.find(inst.type);
+		if (it == objects.end()) {
+			std::cout << "Missing object type: " << inst.type << "\n";
+			continue; // skip this objectInstance
+		}
+		const ObjectData& type = it->second;
 
 		//build sprite
 		sf::Sprite sprite;
@@ -93,7 +100,7 @@ void Scene::buildObjects(const SceneData& sd) {
 
 		//select variant frame
 		sf::IntRect rect(
-			inst.variantCount * type.tileWidth,
+			inst.variant * type.tileWidth,
 			0,
 			type.tileWidth,
 			type.tileHeight
@@ -110,13 +117,15 @@ void Scene::buildObjects(const SceneData& sd) {
 	}
 }
 
-void Scene::onEnter(PlayerPawn* p) {
+void Scene::onEnter(PlayerPawn* p, sf::Vector2f pos) {
 	p->setWorldBounds(groundArea);
+	p->setPos(pos);
 	cameraPos = p->getPos();
 
 }
 
 void Scene::checkCollision(PlayerPawn* p) {
+	if (!map) return;
 	sf::FloatRect pawnBounds = p->pawnBounds();
 
 	const auto& sprites = map->getObjSprites();
@@ -128,10 +137,17 @@ void Scene::checkCollision(PlayerPawn* p) {
 		const auto& type = types.at(inst.type);
 		const auto& sprite = sprites[i];
 
-		if (!type.collision)
+		if (!pawnBounds.intersects(sprite.getGlobalBounds()))
 			continue;
-		if (pawnBounds.intersects(sprite.getGlobalBounds())) {
-			//collision
+
+		if (type.eventType == EventType::SceneChange) {
+			if (!type.targetScene.empty())
+				requestSceneChange(type.targetScene);				
+		}
+		
+		if (type.collision){
+			
+			//stuff
 		}
 		
 	}

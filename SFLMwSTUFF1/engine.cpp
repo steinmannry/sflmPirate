@@ -18,6 +18,7 @@ Engine::Engine()
 	textures.load("house", "house.png");
 	textures.load("wildflowers", "wildflowers.png");
 	textures.load("shadowman", "shadowman.png");
+	textures.load("sign", "sign.png");
 
 	animationLibrary.load("walkRL", "walk_rl.json");	
 	
@@ -51,9 +52,11 @@ void Engine::loadScene(const std::string& path) {
 	json j = JsonLoader::load("assets/data/" + path);
 	SceneData data = SceneData::fromJson(j);
 	scene = std::make_unique<Scene>(textures, animationLibrary, data);
-	scene->buildMap(data);
-	scene->onEnter(player.getActivePawn());
+	scene->requestSceneChange = [this](const std::string& path) {
+		loadScene(path);
+		};
 
+	scene->onEnter(player.getActivePawn(), data.spawnPos);
 }
 
 void Engine::run() {

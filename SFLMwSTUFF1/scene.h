@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <unordered_map>
 #include "playerPawn.h"
 #include "sceneData.h"
 #include "animationData.h"
@@ -16,11 +17,12 @@ class Scene {
 public:
 	Scene(TextureManager& texture, AnimationLibrary& al, const SceneData& sd);
 	std::unique_ptr<Map> map;
+	std::function<void(const std::string&)> requestSceneChange;
 
-	void buildMap(const SceneData& sd);
-	void buildObjects(const SceneData& sd);
+	void buildMap();
+	void buildObjects();
 	//void buildTilesets(const SceneData& sd);
-	void onEnter(PlayerPawn* p);
+	void onEnter(PlayerPawn* p, sf::Vector2f pos);
 	void checkCollision(PlayerPawn* p);
 	void buildGradient(const GradientData& gd, sf::VertexArray& va, Area& a);
 
@@ -33,10 +35,13 @@ public:
 
 
 private:
+	MapType mapType;
 	TextureManager& textures;
 	AnimationLibrary& animations;
 	std::unordered_map<std::string, Tileset> tilesets;
 	std::vector<sf::Sprite> objectSprites;
+	std::vector<ObjectInstance> objInstances;
+	std::unordered_map<std::string, ObjectData> objects;
 
 	int selectedIndex = 0;
 	//PlayerPawn* activePawn = nullptr;

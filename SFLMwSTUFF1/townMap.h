@@ -21,13 +21,11 @@ private:
 	//sf::Sprite sprite;
 	
 	//std::unordered_map<std::string, Tileset>& tilesets;
-	std::unordered_map<std::string, ObjectData> objectData;
-	const std::vector<ObjectInstance> objInst;
-	const std::vector<sf::Sprite>objectSprites;
-	int width;
-	int height;
-
-	std::vector<int> groundLayer;
+	const std::unordered_map<std::string, ObjectData>& objectData;
+	const std::vector<ObjectInstance>& objInst;
+	const std::vector<sf::Sprite>& objectSprites;
+	
+	//std::vector<int> groundLayer;
 	//std::vector<int> buildingLayer;
 
 	//Tileset* groundTileset;
