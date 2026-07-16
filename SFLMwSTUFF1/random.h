@@ -36,6 +36,11 @@ namespace Random
 		return std::uniform_int_distribution{ min, max }(mt);
 	}
 
+	inline float get(float min, float max)
+	{
+		return std::uniform_real_distribution<float>{ min, max }(mt);
+	}
+
 	//the following function templates can be used to generate random numbers in other cases
 	//See https://www.learncpp.com/cpp-tutorial/function-template-instantiation/
 	// You can ignore these if you don't understand them

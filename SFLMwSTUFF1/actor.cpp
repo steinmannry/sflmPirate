@@ -1,25 +1,49 @@
 #include "actor.h"
+#include "scene.h"
 #include "animation.h"
 #include "animationLibrary.h"
 #include "textureManager.h"
 #include <iostream>
 
-Actor::Actor(AnimationLibrary& lib, const sf::Texture& tex) 
-	: PlayerPawn() {
+Actor::Actor(const ActorData& d, AnimationLibrary& lib, const sf::Texture& tex)
+	: PlayerPawn(), data(d),
+	stats(data.statsMode == StatsMode::Random ? Stats(StatsMode::Random) : Stats(d.stats)){
+
+	name = data.name;
+	className = data.className;
+	levelData.level = data.level;
+	levelData.statPoints = static_cast<float>(levelData.level * .5);
+	inventory.setOwner(this);
+	equipment.setOwner(this);
+	weightCapacity += data.stats.CON + data.stats.STR;
+
 	sprite.setTexture(tex);
-	buildAnimation(tex, lib);
-	sprite.setOrigin(anim.getFrameRect().width / 2.f, anim.getFrameRect().height / 2.f);
+	//pawnBounds();
 }
 
 void Actor::update(float dt) {
 	handleInput();
-
+	//sprite.move(direction * stats.SPD * dt);
+	
 	sf::Vector2f pos = sprite.getPosition();
-	pos += direction * speed * dt;
-	anim.update(dt);
+	sf::Vector2f oldPos = pos;
+		
+	pos.x += direction.x * stats.SPD * dt;
+	sprite.setPosition(pos);
+	if (scene->checkCollision(this)) {
+		pos.x = oldPos.x;
+		sprite.setPosition(pos);
+	}
 
-	updateAnimDirection();
-	sprite.setPosition(pos);	
+	pos.y += direction.y * stats.SPD * dt;
+	sprite.setPosition(pos);
+	if (scene->checkCollision(this)) {
+		pos.y = oldPos.y;
+		sprite.setPosition(pos);
+	}
+
+	anim.update(dt);
+	updateAnimDirection();	
 	boundsCheck();	
 }
 
@@ -45,14 +69,11 @@ void Actor::handleInput() {
 		direction = dir;
 
 		if (sf::Joystick::isButtonPressed(0, 0)) {
-			//do stuff
+			std::cout << sprite.getPosition().x << " " << sprite.getPosition().y << "\n";
 		}
 	}
 }
 
-sf::Vector2f Actor::getPos() const {
-	return sprite.getPosition();
-}
 
 void Actor::updateAnimDirection() {
 	const sf::IntRect& rect = anim.getFrameRect();
@@ -70,39 +91,7 @@ void Actor::updateAnimDirection() {
 	}
 }
 
-void Actor::loadAnimation(const std::string& key, AnimationLibrary& lib, const sf::Texture& tex) {
-	const AnimationData& data = lib.get(key);
 
-	Animation animObj(
-		&tex,
-		data.frameWidth,
-		data.frameHeight,
-		data.frameCount,
-		data.frameTime,
-		data.row,
-		data.loop,
-		data.reverse
-	);
-	anim.addAnimation(key, animObj);
-}
-
-void Actor::buildAnimation(const sf::Texture& tex, AnimationLibrary& lib) {
-	loadAnimation("walkRL", lib, tex);
-	//loadAnimation("walkUp", lib, tex);
-	//loadAnimation("walkDown", lib, tex);
-	//loadAnimation("IdleRL", lib, tex);
-
-	anim.play("walkRL"); //set play to idle when anim available
-	sprite.setTextureRect(anim.getFrameRect());
-}
-
-void Actor::setWorldBounds(Area& a) {
-	worldBounds = a;
-}
-
-sf::FloatRect Actor::pawnBounds() {
-	return sprite.getGlobalBounds();
-}
 
 void Actor::boundsCheck() {
 	sf::Vector2f pos = sprite.getPosition();
@@ -116,6 +105,11 @@ void Actor::boundsCheck() {
 	sprite.setPosition(pos);
 }
 
-void Actor::setPos(sf::Vector2f pos) {
-	sprite.setPosition(pos);
+
+sf::FloatRect Actor::pawnBounds() {
+	collisionBounds = sprite.getGlobalBounds();
+	collisionBounds.top += 32;
+	collisionBounds.height -= 32;
+	return collisionBounds;
 }
+

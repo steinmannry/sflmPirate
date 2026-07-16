@@ -3,13 +3,18 @@
 #include "boat.h"
 #include "actor.h"
 #include "scene.h"
+#include <iostream>
 
 Player::Player() : scene(nullptr), activePawn(nullptr){
+
 }
 
 void Player::update(float dt) {
 	cameraPos = activePawn->getPos();
 	handleInput();
+
+	if (gamePaused)
+		return;
 	
 	if (activePawn) {
 		activePawn->handleInput();
@@ -18,7 +23,18 @@ void Player::update(float dt) {
 }
 
 void Player::handleInput() {
-	//menu ui input
+	if (sf::Joystick::isConnected(0)) {
+		if (sf::Joystick::isButtonPressed(0, 3)) {
+			requestStateChange(GameState::Menu);
+			gamePaused = true;
+		}		
+
+		if (sf::Joystick::isButtonPressed(0, 2)) {
+			std::cout << " crew weapon: " << crew[0]->getEquipment().getWeapon()->getName() << "\n";
+
+
+		}
+	}
 }
 
 void Player::addPawn(PlayerPawn* p){
@@ -36,3 +52,4 @@ sf::Vector2f Player::getPawnPos() {
 
 void Player::setScene(Scene* s) { scene = s; }
 void Player::setActivePawn(PlayerPawn * p) { activePawn = p; }
+

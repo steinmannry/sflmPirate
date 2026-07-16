@@ -1,6 +1,6 @@
 {
 	"sceneName":	"house2",
-	"mapType":	"town",
+	"mapType":	"Town",
 	"worldSize":	{ "x": 1000, "y": 1000},
 
 	"skyArea":	{
@@ -18,7 +18,7 @@
 		"bottomRight": { "x": 1000, "y": 1000}
 	},
 
-	"spawnPos": {"x": 940, "y": 200},		
+	"spawnPos": {"x": 910, "y": 200},		
 
 
 	"skyGradient": {
@@ -59,8 +59,8 @@
 			"tileHeight": 32,
 			"variantCount": 1,
 			"collision": false,
-			"eventType": "sceneChange",
-			"triggerType": "proximity",
+			"eventType": "SceneChange",
+			"triggerType": "Proximity",
 			"targetScene": "house.json"
 		}
 	},

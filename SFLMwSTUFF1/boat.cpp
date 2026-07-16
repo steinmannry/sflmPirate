@@ -62,3 +62,5 @@ void Boat::handleInput() {
 sf::FloatRect Boat::pawnBounds() {
 	return sprite.getGlobalBounds();
 }
+
+

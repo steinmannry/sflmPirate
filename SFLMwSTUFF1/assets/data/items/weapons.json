@@ -1,0 +1,32 @@
+{
+    "items":[
+	{
+	"id":  "StoneDagger",
+	"name": "stone dagger",
+	"type": "Weapon",
+	"price": 5,
+	"weight": 1.0,
+	"attackPower": {"min": 2, "max": 3}
+	},
+
+	{
+	"id":  "IronDagger",
+	"name": "iron dagger",
+	"type": "Weapon",
+	"price": 9,
+	"weight": 1.3,
+	"attackPower": {"min": 3, "max": 5}
+	},
+
+	{
+	"id":  "ShortBow",
+	"name": "short bow",
+	"type": "Weapon",
+	"price": 12,
+	"weight": 3.0,
+	"attackPower": {"min": 1, "max": 5}
+	}
+
+    ]	
+
+}

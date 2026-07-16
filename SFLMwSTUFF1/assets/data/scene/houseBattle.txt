@@ -1,0 +1,86 @@
+{
+	"sceneName":	"houseBattle",
+	"mapType":	"Battle",
+	"worldSize":	{ "x": 1000, "y": 1000},
+
+	"skyArea":	{
+		"topLeft": { "x": 0, "y": 0},
+		"bottomRight": { "x": 0, "y": 0}
+	},
+
+	"groundArea":	{
+		"topLeft": { "x": 0, "y": 0},
+		"bottomRight": { "x": 1000, "y": 1000}
+	},
+
+	"bottomOffset":	{
+		"topLeft": { "x": 8000, "y": 6000},
+		"bottomRight": { "x": 1000, "y": 1000}
+	},
+
+	"spawnPos": {"x": 100, "y": 900},
+
+	"skyGradient": {
+		"enabled": false
+	},
+
+
+	"groundGradient":  {
+		"enabled": true,
+		"topLeft": [34, 139, 34],
+		"topRight": [34, 139, 34],
+		"bottomLeft": [34, 139, 34],
+		"bottomRight": [34, 139, 34]
+	},
+	
+
+	"objects":{
+		"buildings":{
+			"texture": "house",
+			"tileWidth": 128,
+			"tileHeight": 128,
+			"variantCount": 1,
+			"collision": true
+			"collisionBox": {
+				"left": 0, "top": 64,
+				"width": 128, "height": 64
+					}
+			},		
+
+	
+		"wildflowers":{
+			"texture": "wildflowers",
+			"tileWidth": 32,
+			"tileHeight": 32,
+			"variantCount": 4
+			},
+
+		"sign":{
+			"texture": "sign",
+			"tileWidth": 32,
+			"tileHeight": 32,
+			"variantCount": 1
+			},
+
+		"largePine":{
+			"texture": "largePine",
+			"tileWidth": 64,
+			"tileHeight": 128,
+			"variantCount": 1,
+			"collision": true
+			"eventType": "Tree",
+			"triggerType": "Command" 
+			}
+		},
+
+		"objectInstances": [
+			{ "type": "buildings",  "variant": 0, "x": 100,  "y": 200},
+			{ "type": "wildflowers",  "variant": 0, "x": 90,  "y": 320},
+			{ "type": "wildflowers",  "variant": 1, "x": 122,  "y": 320},
+			{ "type": "wildflowers",  "variant": 2, "x": 206,  "y": 320},
+			{ "type": "wildflowers",  "variant": 3, "x": 238,  "y": 320},
+			{ "type": "sign", "variant": 0, "x": 20, "y": 100},
+			{ "type": "largePine", "variant": 0, "x": 260, "y": 200}
+	]
+			
+}

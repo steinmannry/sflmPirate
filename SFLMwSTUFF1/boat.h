@@ -15,7 +15,10 @@ public:
 	sf::Vector2f getPos() const override;
 	void setPos(sf::Vector2f pos) override { sprite.setPosition(pos); }
 	sf::FloatRect pawnBounds() override;
+	sf::FloatRect getGlobalBounds() override { return sprite.getGlobalBounds(); }
 	const sf::Sprite& getSprite() const { return sprite; }
+	sf::Sprite& getSprite() override { return sprite; }
+
 	//void setPos(sf::Vector2f pos) { sprite.setPosition(pos); }
 	//const sf::Vector2f getPos() const { return sprite.getPosition(); }
 	void setRotationSpeed(float x) { rotationSpeed = x * 1.5f; }
@@ -23,6 +26,7 @@ public:
 
 	void setWorldBounds(Area& a) { worldBounds = a; }//help
 	void setOwner(Owner o) { owner = o; }
+
 private:
 
 	Owner owner;

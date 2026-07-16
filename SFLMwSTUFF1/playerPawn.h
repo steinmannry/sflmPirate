@@ -1,9 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "animationController.h"
-#include "area.h";
+#include "area.h"
 
-
+class Scene;
 
 class PlayerPawn{
 public:
@@ -17,4 +17,9 @@ public:
 	virtual void handleInput() = 0;
 	virtual void setWorldBounds(Area& a) = 0;
 	virtual sf::FloatRect pawnBounds() = 0;
+	virtual sf::FloatRect getGlobalBounds() = 0;
+	virtual void setScene(Scene* s) = 0;
+	virtual sf::Sprite& getSprite() = 0;
+private:
+	Scene* scene = nullptr;
 };

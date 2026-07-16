@@ -160,23 +160,48 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="actor.cpp" />
+    <ClCompile Include="actorData.cpp" />
+    <ClCompile Include="actorFactory.cpp" />
     <ClCompile Include="animationController.cpp" />
     <ClCompile Include="animationData.cpp" />
     <ClCompile Include="animationLibrary.cpp" />
     <ClCompile Include="boat.cpp" />
+    <ClCompile Include="convert.cpp" />
     <ClCompile Include="engine.cpp" />
+    <ClCompile Include="equipment.cpp" />
     <ClCompile Include="inventory.cpp" />
+    <ClCompile Include="item.cpp" />
+    <ClCompile Include="itemData.cpp" />
+    <ClCompile Include="itemFactory.cpp" />
     <ClCompile Include="jsonLoader.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="menu.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="sceneData.cpp" />
+    <ClCompile Include="stats.cpp" />
     <ClCompile Include="textureManager.cpp" />
     <ClCompile Include="tileset.cpp" />
     <ClCompile Include="townMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="actor.h" />
+    <ClInclude Include="actorData.h" />
+    <ClInclude Include="actorFactory.h" />
+    <ClInclude Include="armorType.h" />
+    <ClInclude Include="attackPower.h" />
+    <ClInclude Include="battleScene.h" />
+    <ClInclude Include="convert.h" />
+    <ClInclude Include="equipment.h" />
+    <ClInclude Include="gameState.h" />
+    <ClInclude Include="item.h" />
+    <ClInclude Include="itemData.h" />
+    <ClInclude Include="itemFactory.h" />
+    <ClInclude Include="itemID.h" />
+    <ClInclude Include="itemType.h" />
+    <ClInclude Include="level.h" />
+    <ClInclude Include="menu.h" />
+    <ClInclude Include="parseStatsMode.h" />
     <ClInclude Include="playerPawn.h" />
     <ClInclude Include="animation.h" />
     <ClInclude Include="animationController.h" />
@@ -194,6 +219,8 @@
     <ClInclude Include="scene.h" />
     <ClInclude Include="sceneData.h" />
     <ClInclude Include="stats.h" />
+    <ClInclude Include="statsData.h" />
+    <ClInclude Include="statsMode.h" />
     <ClInclude Include="textureManager.h" />
     <ClInclude Include="tileset.h" />
     <ClInclude Include="townMap.h" />

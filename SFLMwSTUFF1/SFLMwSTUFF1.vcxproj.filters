@@ -19,30 +19,36 @@
     <Filter Include="Header Files\data">
       <UniqueIdentifier>{0950fe63-f0ba-48ca-b6df-7dd4b169f729}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\animations">
-      <UniqueIdentifier>{7b84d492-fb82-40d1-b0de-d7f4a763940b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\player">
       <UniqueIdentifier>{8479acf8-6886-4117-8731-bb2e2ac01f56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\animations/tex">
+      <UniqueIdentifier>{7b84d492-fb82-40d1-b0de-d7f4a763940b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\items">
+      <UniqueIdentifier>{a07f7f79-5a76-4c36-8068-4b5299fd749f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\items">
+      <UniqueIdentifier>{eadc7f6f-46b1-4c66-9b92-d5491d559278}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\data">
+      <UniqueIdentifier>{19db7579-c015-4f6d-aa1b-a73287521a3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\player">
+      <UniqueIdentifier>{a330adc8-8693-4431-921e-a5f88538e0f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\anim/grapic">
+      <UniqueIdentifier>{a43a9f13-1532-492a-a6a9-f34925c11fdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\maps">
+      <UniqueIdentifier>{730daeea-cc45-4530-891b-f62090f514ab}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="jsonLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="animationData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="engine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="animationController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="textureManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="scene.cpp">
@@ -51,26 +57,65 @@
     <ClCompile Include="sceneData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="boat.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="animationController.cpp">
+      <Filter>Source Files\anim/grapic</Filter>
     </ClCompile>
-    <ClCompile Include="player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="inventory.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="animationData.cpp">
+      <Filter>Source Files\anim/grapic</Filter>
     </ClCompile>
     <ClCompile Include="animationLibrary.cpp">
+      <Filter>Source Files\anim/grapic</Filter>
+    </ClCompile>
+    <ClCompile Include="stats.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="itemFactory.cpp">
+      <Filter>Source Files\items</Filter>
+    </ClCompile>
+    <ClCompile Include="itemData.cpp">
+      <Filter>Source Files\items</Filter>
+    </ClCompile>
+    <ClCompile Include="item.cpp">
+      <Filter>Source Files\items</Filter>
+    </ClCompile>
+    <ClCompile Include="convert.cpp">
+      <Filter>Source Files\data</Filter>
+    </ClCompile>
+    <ClCompile Include="jsonLoader.cpp">
+      <Filter>Source Files\data</Filter>
     </ClCompile>
     <ClCompile Include="actor.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\player</Filter>
+    </ClCompile>
+    <ClCompile Include="boat.cpp">
+      <Filter>Source Files\player</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Source Files\player</Filter>
+    </ClCompile>
+    <ClCompile Include="inventory.cpp">
+      <Filter>Source Files\player</Filter>
     </ClCompile>
     <ClCompile Include="tileset.cpp">
+      <Filter>Source Files\anim/grapic</Filter>
+    </ClCompile>
+    <ClCompile Include="textureManager.cpp">
+      <Filter>Source Files\anim/grapic</Filter>
+    </ClCompile>
+    <ClCompile Include="equipment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="townMap.cpp">
+    <ClCompile Include="menu.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="actorData.cpp">
+      <Filter>Source Files\player</Filter>
+    </ClCompile>
+    <ClCompile Include="actorFactory.cpp">
+      <Filter>Source Files\player</Filter>
+    </ClCompile>
+    <ClCompile Include="townMap.cpp">
+      <Filter>Source Files\maps</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -83,12 +128,6 @@
     <ClInclude Include="ocean.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="boat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inventory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="map.h">
       <Filter>Header Files\maps</Filter>
     </ClInclude>
@@ -96,16 +135,16 @@
       <Filter>Header Files\maps</Filter>
     </ClInclude>
     <ClInclude Include="animation.h">
-      <Filter>Header Files\animations</Filter>
+      <Filter>Header Files\animations/tex</Filter>
     </ClInclude>
     <ClInclude Include="animationController.h">
-      <Filter>Header Files\animations</Filter>
+      <Filter>Header Files\animations/tex</Filter>
     </ClInclude>
     <ClInclude Include="animationData.h">
-      <Filter>Header Files\animations</Filter>
+      <Filter>Header Files\animations/tex</Filter>
     </ClInclude>
     <ClInclude Include="animationLibrary.h">
-      <Filter>Header Files\animations</Filter>
+      <Filter>Header Files\animations/tex</Filter>
     </ClInclude>
     <ClInclude Include="area.h">
       <Filter>Header Files\data</Filter>
@@ -113,17 +152,8 @@
     <ClInclude Include="jsonLoader.h">
       <Filter>Header Files\data</Filter>
     </ClInclude>
-    <ClInclude Include="sceneData.h">
-      <Filter>Header Files\maps</Filter>
-    </ClInclude>
     <ClInclude Include="tileset.h">
       <Filter>Header Files\maps</Filter>
-    </ClInclude>
-    <ClInclude Include="textureManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="random.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="actor.h">
       <Filter>Header Files\player</Filter>
@@ -134,7 +164,76 @@
     <ClInclude Include="playerPawn.h">
       <Filter>Header Files\player</Filter>
     </ClInclude>
+    <ClInclude Include="boat.h">
+      <Filter>Header Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="textureManager.h">
+      <Filter>Header Files\animations/tex</Filter>
+    </ClInclude>
+    <ClInclude Include="random.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
     <ClInclude Include="stats.h">
+      <Filter>Header Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="item.h">
+      <Filter>Header Files\items</Filter>
+    </ClInclude>
+    <ClInclude Include="itemType.h">
+      <Filter>Header Files\items</Filter>
+    </ClInclude>
+    <ClInclude Include="armorType.h">
+      <Filter>Header Files\items</Filter>
+    </ClInclude>
+    <ClInclude Include="itemID.h">
+      <Filter>Header Files\items</Filter>
+    </ClInclude>
+    <ClInclude Include="itemData.h">
+      <Filter>Header Files\items</Filter>
+    </ClInclude>
+    <ClInclude Include="level.h">
+      <Filter>Header Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="equipment.h">
+      <Filter>Header Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="attackPower.h">
+      <Filter>Header Files\items</Filter>
+    </ClInclude>
+    <ClInclude Include="itemFactory.h">
+      <Filter>Header Files\items</Filter>
+    </ClInclude>
+    <ClInclude Include="convert.h">
+      <Filter>Header Files\items</Filter>
+    </ClInclude>
+    <ClInclude Include="menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="actorData.h">
+      <Filter>Header Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="actorFactory.h">
+      <Filter>Header Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="inventory.h">
+      <Filter>Header Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="statsData.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneData.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="gameState.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="statsMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parseStatsMode.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="battleScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

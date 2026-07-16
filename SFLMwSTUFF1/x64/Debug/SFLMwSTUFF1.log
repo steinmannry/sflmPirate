@@ -1,17 +1,22 @@
 ﻿  scene.cpp
-C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\playerPawn.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  (compiling source file 'scene.cpp')
-  
   SFLMwSTUFF1.vcxproj -> C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\SFLMwSTUFF1.exe
+  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\arial.TTF
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\animations\ocean_wave.json
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\animations\shadowman_walkRL.json
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\animations\walk_rl.json
-  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\house.json
-  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\house2.json
-  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\over_world.json
+  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\actors\actors.json
+  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\items\armor.json
+  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\items\consumable.json
+  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\items\misc.json
+  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\items\weapons.json
+  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\scene\house.json
+  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\scene\house2.json
+  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\scene\over_world.json
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\archee.png
+  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\archee.png~
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\boat_right.png
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\house.png
+  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\largePine.png
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\pine.png
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\shadowman.png
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\shadowman.png~
@@ -19,4 +24,4 @@ C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\playerPawn.h(4,10): warning 
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\sign.png
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\waves2.png
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\wildflowers.png
-  16 File(s) copied
+  24 File(s) copied

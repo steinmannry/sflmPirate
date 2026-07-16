@@ -24,8 +24,6 @@ Scene::Scene(TextureManager& texture, AnimationLibrary& al, const SceneData& sd)
 	buildObjects();
 	buildMap();
 
-	std::cout << objectSprites.size() << "objSprite size\n";
-
 	if (skyGrad) {
 		buildGradient(sd.skyGradient, skyGradient, skyArea);
 	}
@@ -77,7 +75,7 @@ void Scene::buildMap() {
 
 	case MapType::Town:
 		map = std::make_unique<TownMap>(objectSprites, objInstances, objects);
-		//activePawn = new Actor(animations, textures.get("shadowman"));
+		
 		break;
 	}
 }
@@ -117,15 +115,14 @@ void Scene::buildObjects() {
 	}
 }
 
-void Scene::onEnter(PlayerPawn* p, sf::Vector2f pos) {
+void Scene::onEnter(PlayerPawn* p, sf::Vector2f& pos) {
 	p->setWorldBounds(groundArea);
 	p->setPos(pos);
 	cameraPos = p->getPos();
-
 }
 
-void Scene::checkCollision(PlayerPawn* p) {
-	if (!map) return;
+bool Scene::checkCollision(PlayerPawn* p) {
+	if (!map) return false;
 	sf::FloatRect pawnBounds = p->pawnBounds();
 
 	const auto& sprites = map->getObjSprites();
@@ -137,22 +134,31 @@ void Scene::checkCollision(PlayerPawn* p) {
 		const auto& type = types.at(inst.type);
 		const auto& sprite = sprites[i];
 
-		if (!pawnBounds.intersects(sprite.getGlobalBounds()))
+
+		
+		sf::FloatRect objBounds = type.collisionBox;
+		objBounds.left += inst.x;
+		objBounds.top += inst.y;
+
+		if (!pawnBounds.intersects(objBounds))
 			continue;
 
 		if (type.eventType == EventType::SceneChange) {
 			if (!type.targetScene.empty())
-				requestSceneChange(type.targetScene);				
+				pendingScene = type.targetScene;
+			//requestSceneChange(type.targetScene);				
 		}
-		
-		if (type.collision){
-			
-			//stuff
-		}
-		
-	}
 	
+		if (type.collision) {		
+			
+			return true;					
+		}		
+	}
+	return false;
+
+	//probably want to split this function into 2.  check blocking collision and check trigger collision.
 }
+
 /*
 void Scene::buildTilesets(const SceneData& sd) {
 	for (auto& [name, info] : sd.tilesets) {
@@ -179,5 +185,9 @@ void Scene::buildGradient(const GradientData& gd, sf::VertexArray& va, Area& a) 
 	va[3].color = gd.bottomRight;
 }
 
-
+std::string Scene::consumeSceneChange() {
+	std::string s = pendingScene;
+	pendingScene.clear();
+	return s;
+}
 

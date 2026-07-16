@@ -1,0 +1,23 @@
+{
+    "items": [
+	{
+	"id": "WoodenArrows",
+	"name": "wooden arrows",
+	"type": "Consumable",
+	"price": 0.1,
+	"weight": 0.01
+	},
+
+	{
+	"id": "Herb",
+	"name": "herb",
+	"type": "Consumable",
+	"price": 5,
+	"weight": 0.1,
+	"itemPower": 25
+	}
+
+
+
+    ]
+}

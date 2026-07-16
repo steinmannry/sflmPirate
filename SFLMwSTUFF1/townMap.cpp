@@ -9,7 +9,6 @@ TownMap::TownMap(const std::vector<sf::Sprite>& objectSprites, const std::vector
 	//buildingTileset = &tilesets.at("buildings");
 	//others
 	//auto& info = tilesetInfo.at("buildings");
-	
 }
 
 

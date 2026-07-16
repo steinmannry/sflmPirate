@@ -15,6 +15,7 @@ class Boat;
 
 class Scene {
 public:
+	
 	Scene(TextureManager& texture, AnimationLibrary& al, const SceneData& sd);
 	std::unique_ptr<Map> map;
 	std::function<void(const std::string&)> requestSceneChange;
@@ -22,8 +23,8 @@ public:
 	void buildMap();
 	void buildObjects();
 	//void buildTilesets(const SceneData& sd);
-	void onEnter(PlayerPawn* p, sf::Vector2f pos);
-	void checkCollision(PlayerPawn* p);
+	void onEnter(PlayerPawn* p, sf::Vector2f& pos);
+	bool checkCollision(PlayerPawn* p);
 	void buildGradient(const GradientData& gd, sf::VertexArray& va, Area& a);
 
 	//void setActivePawn(PlayerPawn* p);
@@ -33,7 +34,8 @@ public:
 	void update(float dt, PlayerPawn* p);
 	void draw(sf::RenderWindow& window, PlayerPawn* p);
 
-
+	bool hasPendingSceneChange() const { return !pendingScene.empty(); }
+	std::string consumeSceneChange();
 private:
 	MapType mapType;
 	TextureManager& textures;
@@ -61,4 +63,5 @@ private:
 	sf::Vector2f cameraPos;
 	float cameraSmooth = 1.f;
 
+	std::string pendingScene;
 };

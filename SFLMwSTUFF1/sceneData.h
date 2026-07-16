@@ -5,8 +5,8 @@
 #include "jsonLoader.h"
 
 enum class MapType {OverWorld, Water, Town, Land, Battle, NauticalBattle};
-enum class EventType {None, Dialog, SceneChange, Loot, Heal, StatBoost, StatPenalty};
-enum class TriggerType {Proximity, Button};
+enum class EventType {None, Dialog, SceneChange, Loot, Heal, StatBoost, StatPenalty, Tree};
+enum class TriggerType {Proximity, Button, Command};
 
 struct TilesetInfo {
 	std::string textureName;
@@ -27,6 +27,7 @@ struct ObjectData {
 	int tileHeight;
 	int variantCount;
 	bool collision = false;
+	sf::FloatRect collisionBox;
 	EventType eventType = EventType::None;
 	TriggerType trigger = TriggerType::Proximity;
 	std::string targetScene;
