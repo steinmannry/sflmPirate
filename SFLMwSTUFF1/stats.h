@@ -22,6 +22,6 @@ struct Stats {
 	float CON = 1.f;
 	float CHA = 1.f;	
 	float LUK = 1.f;
-	float DEF = 1.f;
+	float DEF = 0.f;
 	float SPD = 1.f;
 };

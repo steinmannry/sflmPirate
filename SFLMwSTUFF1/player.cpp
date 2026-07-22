@@ -17,7 +17,7 @@ void Player::update(float dt) {
 		return;
 	
 	if (activePawn) {
-		activePawn->handleInput();
+		//activePawn->handleInput();
 		activePawn->update(dt);
 	}
 }
@@ -37,7 +37,7 @@ void Player::handleInput() {
 	}
 }
 
-void Player::addPawn(PlayerPawn* p){
+void Player::addPawn(Pawn* p){
 	playerPawns.push_back(p);
 
 }
@@ -51,5 +51,15 @@ sf::Vector2f Player::getPawnPos() {
 }
 
 void Player::setScene(Scene* s) { scene = s; }
-void Player::setActivePawn(PlayerPawn * p) { activePawn = p; }
+void Player::setActivePawn(Pawn * p) { activePawn = p; }
 
+std::vector<Actor*> Player::getBattleCrew() {
+	std::vector<Actor*> actors;
+	actors.reserve(crew.size());
+
+	for (auto& c : crew) {
+		actors.push_back(c.get());
+	}
+	return actors;
+
+}

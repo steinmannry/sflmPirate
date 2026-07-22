@@ -1,5 +1,6 @@
 #include "equipment.h"
 #include "item.h"
+#include "Actor.h"
 
 void Equipment::equip(Item* item) {
 	if (item->getType() != ItemType::Armor && item->getType() != ItemType::Weapon)
@@ -7,6 +8,7 @@ void Equipment::equip(Item* item) {
 
 	if (item->getType() == ItemType::Weapon) {
 		weapon = item;
+		owner->applyEquipBonus();
 		return;
 	}
 
@@ -37,13 +39,17 @@ void Equipment::equip(Item* item) {
 		default:
 			break;
 		}
+		owner->applyEquipBonus();
 	}
 }
 
 void Equipment::unequip(Item* item) {
 	if (item->getType() == ItemType::Weapon) {
-		if (weapon == item)
+		if (weapon == item) {
 			weapon = nullptr;
+			owner->applyEquipBonus();
+			return;
+		}
 	}
 	switch (item->getArmorType()) {
 		case ArmorType::Head:
@@ -71,6 +77,7 @@ void Equipment::unequip(Item* item) {
 		default:
 			break;
 	}
+	owner->applyEquipBonus();
 }
 
 bool Equipment::isEquipped(const Item* item) const {
@@ -89,4 +96,17 @@ std::vector<std::pair<std::string, Item*>> Equipment::getEquippedList() const {
 	list.emplace_back("Misc2", misc2);
 
 	return list;
+}
+
+StatsData Equipment::getTotalBonus() const{
+	StatsData total;
+
+	if (weapon) total += weapon->getStats();
+	if (armor) total += armor->getStats();
+	if (head) total += head->getStats();
+	if (hands) total += hands->getStats();
+	if (feet) total += feet->getStats();
+	if (misc) total += misc->getStats();
+
+	return total;
 }

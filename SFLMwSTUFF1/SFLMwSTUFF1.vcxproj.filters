@@ -54,9 +54,6 @@
     <ClCompile Include="scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sceneData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="animationController.cpp">
       <Filter>Source Files\anim/grapic</Filter>
     </ClCompile>
@@ -65,9 +62,6 @@
     </ClCompile>
     <ClCompile Include="animationLibrary.cpp">
       <Filter>Source Files\anim/grapic</Filter>
-    </ClCompile>
-    <ClCompile Include="stats.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="itemFactory.cpp">
       <Filter>Source Files\items</Filter>
@@ -102,12 +96,6 @@
     <ClCompile Include="textureManager.cpp">
       <Filter>Source Files\anim/grapic</Filter>
     </ClCompile>
-    <ClCompile Include="equipment.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="menu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="actorData.cpp">
       <Filter>Source Files\player</Filter>
     </ClCompile>
@@ -116,6 +104,36 @@
     </ClCompile>
     <ClCompile Include="townMap.cpp">
       <Filter>Source Files\maps</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneData.cpp">
+      <Filter>Source Files\maps</Filter>
+    </ClCompile>
+    <ClCompile Include="equipment.cpp">
+      <Filter>Source Files\player</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
+      <Filter>Source Files\player</Filter>
+    </ClCompile>
+    <ClCompile Include="stats.cpp">
+      <Filter>Source Files\player</Filter>
+    </ClCompile>
+    <ClCompile Include="townScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="battleScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="statsData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="turnOrderManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="battleWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="enemyBattleController.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -161,7 +179,7 @@
     <ClInclude Include="player.h">
       <Filter>Header Files\player</Filter>
     </ClInclude>
-    <ClInclude Include="playerPawn.h">
+    <ClInclude Include="pawn.h">
       <Filter>Header Files\player</Filter>
     </ClInclude>
     <ClInclude Include="boat.h">
@@ -234,6 +252,30 @@
       <Filter>Header Files\data</Filter>
     </ClInclude>
     <ClInclude Include="battleScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="townScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="owner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="turnOrderManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="battleWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="itemEffect.h">
+      <Filter>Header Files\items</Filter>
+    </ClInclude>
+    <ClInclude Include="listBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="enemyBattleController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="actorState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

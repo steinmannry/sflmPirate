@@ -165,8 +165,11 @@
     <ClCompile Include="animationController.cpp" />
     <ClCompile Include="animationData.cpp" />
     <ClCompile Include="animationLibrary.cpp" />
+    <ClCompile Include="battleScene.cpp" />
+    <ClCompile Include="battleWindow.cpp" />
     <ClCompile Include="boat.cpp" />
     <ClCompile Include="convert.cpp" />
+    <ClCompile Include="enemyBattleController.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="equipment.cpp" />
     <ClCompile Include="inventory.cpp" />
@@ -180,29 +183,37 @@
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="sceneData.cpp" />
     <ClCompile Include="stats.cpp" />
+    <ClCompile Include="statsData.cpp" />
     <ClCompile Include="textureManager.cpp" />
     <ClCompile Include="tileset.cpp" />
     <ClCompile Include="townMap.cpp" />
+    <ClCompile Include="townScene.cpp" />
+    <ClCompile Include="turnOrderManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="actor.h" />
     <ClInclude Include="actorData.h" />
     <ClInclude Include="actorFactory.h" />
+    <ClInclude Include="enemyBattleController.h" />
     <ClInclude Include="armorType.h" />
     <ClInclude Include="attackPower.h" />
     <ClInclude Include="battleScene.h" />
+    <ClInclude Include="battleWindow.h" />
     <ClInclude Include="convert.h" />
     <ClInclude Include="equipment.h" />
     <ClInclude Include="gameState.h" />
     <ClInclude Include="item.h" />
     <ClInclude Include="itemData.h" />
+    <ClInclude Include="itemEffect.h" />
     <ClInclude Include="itemFactory.h" />
     <ClInclude Include="itemID.h" />
     <ClInclude Include="itemType.h" />
     <ClInclude Include="level.h" />
+    <ClInclude Include="listBox.h" />
     <ClInclude Include="menu.h" />
+    <ClInclude Include="owner.h" />
     <ClInclude Include="parseStatsMode.h" />
-    <ClInclude Include="playerPawn.h" />
+    <ClInclude Include="pawn.h" />
     <ClInclude Include="animation.h" />
     <ClInclude Include="animationController.h" />
     <ClInclude Include="animationData.h" />
@@ -215,6 +226,7 @@
     <ClInclude Include="map.h" />
     <ClInclude Include="ocean.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="actorState.h" />
     <ClInclude Include="random.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="sceneData.h" />
@@ -224,6 +236,8 @@
     <ClInclude Include="textureManager.h" />
     <ClInclude Include="tileset.h" />
     <ClInclude Include="townMap.h" />
+    <ClInclude Include="townScene.h" />
+    <ClInclude Include="turnOrderManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

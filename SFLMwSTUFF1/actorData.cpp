@@ -9,6 +9,10 @@ ActorData ActorData::fromJson(const json& j) {
 		data.id = j["id"];
 		data.name = j["name"];
 		data.className = j["className"];
+		if (j.contains("owner")) {
+			std::string Ostring = j["owner"];
+			data.owner = parseOwner(Ostring);
+		}
 		data.texture = j["texture"];
 		std::cout << "Animations JSON field: " << j["animations"].dump(4) << "\n";
 

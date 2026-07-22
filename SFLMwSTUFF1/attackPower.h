@@ -1,6 +1,6 @@
 #pragma once
 
 struct AttackPower {
-	int minDamage = 1;
-	int maxDamage = 1;
+	float minDamage = 1;
+	float maxDamage = 1;
 };

@@ -1,22 +1,37 @@
-﻿  scene.cpp
+﻿  battleScene.cpp
+C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\statsData.h(4,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'battleScene.cpp')
+  
+C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\statsData.h(5,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'battleScene.cpp')
+  
+C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\battleScene.cpp(132,16): warning C4553: '==': result of expression not used; did you intend '='?
+C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\battleScene.cpp(141,42): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\battleScene.cpp(147,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   SFLMwSTUFF1.vcxproj -> C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\SFLMwSTUFF1.exe
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\arial.TTF
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\animations\ocean_wave.json
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\animations\shadowman_walkRL.json
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\animations\walk_rl.json
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\actors\actors.json
+  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\actors\enemies.json
+  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\actors\playeractors.txt
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\items\armor.json
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\items\consumable.json
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\items\misc.json
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\items\weapons.json
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\scene\house.json
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\scene\house2.json
+  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\scene\houseBattle.json
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\data\scene\over_world.json
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\archee.png
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\archee.png~
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\boat_right.png
+  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\bridge.png
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\house.png
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\largePine.png
+  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\oceanCorner.png
+  C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\ocean_corner.png
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\pine.png
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\shadowman.png
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\shadowman.png~
@@ -24,4 +39,4 @@
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\sign.png
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\waves2.png
   C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\assets\textures\wildflowers.png
-  24 File(s) copied
+  30 File(s) copied

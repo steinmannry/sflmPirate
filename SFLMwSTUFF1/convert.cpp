@@ -47,4 +47,18 @@ namespace Convert {
 			return it->second;
 		return ArmorType::Unknown;
 	}
+
+	static const std::unordered_map<std::string, ItemEffect> itemEffectMap = {
+		{"HealHP", ItemEffect::HealHP},
+		{"HealMP", ItemEffect::HealMP},
+		{"Stats", ItemEffect::Stats},
+		{"ActorState", ItemEffect::ActorState},
+		{"Unknown", ItemEffect::Unknown}
+	};
+
+	ItemEffect itemEffect(const std::string& s) {
+		if (auto it = itemEffectMap.find(s); it != itemEffectMap.end())
+			return it->second;
+		return ItemEffect::Unknown;
+	}
 }

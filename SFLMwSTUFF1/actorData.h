@@ -3,6 +3,7 @@
 #include "jsonLoader.h"
 #include "statsData.h"
 #include "statsMode.h"
+#include "owner.h"
 
 struct EquipmentData {
 	std::string weapon;
@@ -26,6 +27,7 @@ struct ActorData {
 	std::string id;
 	std::string name;
 	std::string className;
+	Owner owner;
 	std::string texture;
 	std::vector<std::string> animations;
 	int level = 1;

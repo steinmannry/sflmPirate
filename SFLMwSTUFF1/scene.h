@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
-#include "playerPawn.h"
+#include "pawn.h"
 #include "sceneData.h"
 #include "animationData.h"
 #include "map.h"
@@ -10,49 +10,63 @@
 
 class AnimationLibrary;
 class TextureManager;
-class PlayerPawn;
+class Pawn;
 class Boat;
+class Actor;
 
-class Scene {
+class Scene{
 public:
-	
+	virtual ~Scene() = default;
 	Scene(TextureManager& texture, AnimationLibrary& al, const SceneData& sd);
 	std::unique_ptr<Map> map;
 	std::function<void(const std::string&)> requestSceneChange;
 
+	virtual void update(float dt, Pawn* p);	
+	virtual void draw(sf::RenderWindow& window, Pawn* p);
+	bool checkBlockingCollision(Pawn* p);
+	std::string consumeSceneChange();
 	void buildMap();
-	void buildObjects();
-	//void buildTilesets(const SceneData& sd);
-	void onEnter(PlayerPawn* p, sf::Vector2f& pos);
-	bool checkCollision(PlayerPawn* p);
-	void buildGradient(const GradientData& gd, sf::VertexArray& va, Area& a);
-
-	//void setActivePawn(PlayerPawn* p);
-	void setCameraPos(sf::Vector2f pos) { cameraPos = pos; }
-	void updateCamera(float dt, sf::Vector2f camPos);
-
-	void update(float dt, PlayerPawn* p);
-	void draw(sf::RenderWindow& window, PlayerPawn* p);
+	void onEnter(Pawn* p, sf::Vector2f& pos);//override
+	virtual void onBattleEnter(std::vector<Actor*> crew, sf::Vector2f pos, std::vector<Actor*> enemies) {}
 
 	bool hasPendingSceneChange() const { return !pendingScene.empty(); }
-	std::string consumeSceneChange();
-private:
+	void setCameraPos(sf::Vector2f pos) { cameraPos = pos; }
+
+protected: 
+	virtual void updateMovement(float dt, Pawn* p) {}
+	
+	void buildObjects();
+	//void buildTilesets(const SceneData& sd);
+	
+	
+	
+
+	void buildGradient(const GradientData& gd, sf::VertexArray& va, Area& a);
+
+	//void setActivePawn(Pawn* p);
+	
+	void updateCamera(float dt, sf::Vector2f camPos);//override
+
+	
+
+	
 	MapType mapType;
 	TextureManager& textures;
 	AnimationLibrary& animations;
-	std::unordered_map<std::string, Tileset> tilesets;
+	//std::unordered_map<std::string, Tileset> tilesets;
 	std::vector<sf::Sprite> objectSprites;
 	std::vector<ObjectInstance> objInstances;
 	std::unordered_map<std::string, ObjectData> objects;
 
 	int selectedIndex = 0;
-	//PlayerPawn* activePawn = nullptr;
-	std::vector<Boat*> enemyBoats;
+	//Pawn* activePawn = nullptr;
+	//std::vector<Boat*> enemyBoats;
 
 
 	sf::Vector2f worldSize;
-	Area groundArea;
 	Area skyArea;
+	Area groundArea;
+	
 	Area bottomOffset;
 	sf::VertexArray skyGradient;
 	sf::VertexArray groundGradient;
@@ -64,4 +78,7 @@ private:
 	float cameraSmooth = 1.f;
 
 	std::string pendingScene;
+
+
+	
 };

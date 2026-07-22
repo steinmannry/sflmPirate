@@ -60,6 +60,8 @@ void Menu::update(float dt) {
 			case MenuMode::DiscardCheck:
 				discardCheckSelection(py);
 				break;
+			case MenuMode::ItemReceiver:
+				receiverSelection(py);
 			}
 		}
 	}
@@ -67,7 +69,9 @@ void Menu::update(float dt) {
 void Menu::draw(sf::RenderWindow& window) {
 	window.draw(menuBG);
 	partyBox.draw(window);
-	commandBox.draw(window);
+	if (mode == MenuMode::Command || mode == MenuMode::ItemCommand) {
+		commandBox.draw(window);
+	}
 	if (mode == MenuMode::Item) {
 		window.draw(equipmentBox);
 		for (auto& e : equipment) {
@@ -78,6 +82,9 @@ void Menu::draw(sf::RenderWindow& window) {
 	if (mode == MenuMode::DiscardCheck) {
 		discardCheckBox.draw(window);
 		window.draw(discardCheckText);
+	}
+	if (mode == MenuMode::ItemReceiver) {
+		receiverPartyBox.draw(window);
 	}
 
 }
@@ -112,6 +119,7 @@ void Menu::discardCheckSelection(float py) {
 
 }
 
+//----------PARTY_SELECTION-----------
 void Menu::partySelection(float py) {
 	if (py > 50) {// up
 		partyBox.selectedIndex = std::max(partyBox.selectedIndex - 1, 0);
@@ -124,7 +132,7 @@ void Menu::partySelection(float py) {
 		inputCooldown = .2f;
 	}
 
-	//----------EXIT
+	//-------------EXIT--------------
 	if (sf::Joystick::isButtonPressed(0, 1)) {
 		closeRequest = true;
 		inputCooldown = .2f;
@@ -137,11 +145,43 @@ void Menu::partySelection(float py) {
 		else {
 			selectedActor = player->getCrew()[partyBox.selectedIndex].get();//use .get() to extract unique_ptr
 			inputCooldown = .2f;
+			std::cout << "selected actor: " << selectedActor->getName() << "\n";
 			mode = MenuMode::Command;
 			buildCommandBox();			
 		}
 	}
 }
+
+void Menu::receiverSelection(float py) {
+	if (py > 50) {
+		receiverPartyBox.selectedIndex = std::max(receiverPartyBox.selectedIndex - 1, 0);
+		receiverPartyBox.updateCursor();
+		inputCooldown = .2f;;
+	}
+	if (py < -50) {
+		receiverPartyBox.selectedIndex = std::min(receiverPartyBox.selectedIndex + 1, static_cast<int>(receiverPartyBox.entries.size()) - 1);
+		receiverPartyBox.updateCursor();
+		inputCooldown = .2f;;
+	}
+
+	if (sf::Joystick::isButtonPressed(0, 1)) {
+		inputCooldown = .2f;
+		mode = MenuMode::ItemCommand;
+		return;
+	}
+
+	//------------GIVE ITEM---------------
+	if (sf::Joystick::isButtonPressed(0, 0)) {
+		inputCooldown = .2f;
+		receiverActor = player->getCrew()[receiverPartyBox.selectedIndex].get();
+		if (receiverActor->getInventory().getWeight() + itemWeight <= receiverActor->getWeightCapacity()) {
+			receiverActor->getInventory().addItem(selectedActor->getInventory().extractItem(selectedItemIndex), 1);
+		}
+		mode = MenuMode::Party;
+		return;
+	}
+}
+
 
 void Menu::itemSelection(float py) {
 	if (py > 50) {// up
@@ -169,7 +209,6 @@ void Menu::itemSelection(float py) {
 		buildCommandBox();
 		inputCooldown = .2f;
 	}
-
 
 }
 
@@ -208,14 +247,40 @@ void Menu::commandSelection(float py) {
 	//--------------ITEM --COMMANDS-----------
 	if (mode == MenuMode::ItemCommand) {
 		
+		if (sf::Joystick::isButtonPressed(0, 1)) {
+			inputCooldown = .2f;
+			mode = MenuMode::Item;
+			return;
+		}
+
+
 		if (sf::Joystick::isButtonPressed(0, 0)) {
 			//-----------USE/Equip-----------
 			if (commandBox.selectedIndex == 0) {
 				inputCooldown = .2f;
+				Item* selectedItem = selectedActor->getInventory().getItem(selectedItemIndex);
+				if (selectedItem->getType() == ItemType::Weapon || selectedItem->getType() == ItemType::Armor)
+					selectedActor->getEquipment().equip(selectedItem);
+				if (selectedItem->getType() == ItemType::Consumable)
+					selectedActor->getInventory().useItem(selectedItemIndex);
 			}
 
-			//-----------DISCARD----------
+			//--------------GIVE-------------
 			if (commandBox.selectedIndex == 1) {
+				inputCooldown = .2f;
+				Item* itemGift = selectedActor->getInventory().getItem(selectedItemIndex);
+				if (selectedActor->getEquipment().isEquipped(itemGift)) {
+					selectedActor->getEquipment().unequip(itemGift);
+				}
+
+				itemWeight = selectedActor->getInventory().getItem(selectedItemIndex)->getWeight();
+				buildReceiverPartyBox();
+				mode = MenuMode::ItemReceiver;				
+			}
+
+
+			//-----------DISCARD----------
+			if (commandBox.selectedIndex == 2) {
 				inputCooldown = .2f;
 				Item* item = selectedActor->getInventory().getItem(selectedItemIndex);
 
@@ -229,23 +294,28 @@ void Menu::commandSelection(float py) {
 					selectedActor->getEquipment().unequip(selectedActor->getInventory().getItem(selectedItemIndex));
 					selectedActor->getInventory().removeItemByIndex(selectedItemIndex, 1);			
 					buildEquipment();
-					mode = MenuMode::Item;
+					mode = MenuMode::Party;
 				}
 				else 
 					selectedActor->getInventory().removeItemByIndex(selectedItemIndex, item->getQuantity());
 				buildInventory();
-				mode = MenuMode::Item;
+				mode = MenuMode::Party;
 			}
 
 
 			//-----------EXIT------------
-			if (commandBox.selectedIndex == 2) {
-				mode = MenuMode::Item;
+			if (commandBox.selectedIndex == 3) {
+				mode = MenuMode::Party;
 				inputCooldown = .2f;
 			}
 		}
 		
 	}
+	//-----------ITEM_RECEIVER_COMMANDS------------
+	//if (mode == MenuMode::ItemReceiver) {
+
+	//}
+
 }
 
 
@@ -276,6 +346,7 @@ void Menu::buildInventory() {
 	inventoryBox.rowHeight = 30.f;
 
 	inventoryBox.entries.clear();
+	inventoryBox.selectedIndex = 0;
 	float startX = inventoryBox.box.getPosition().x + 10.f;
 	float startY = inventoryBox.box.getPosition().y + 0.f;
 
@@ -338,6 +409,7 @@ void Menu::buildCommandBox(){
 	commandBox.rowHeight = 30.f; 
 
 	commandBox.entries.clear();
+	commandBox.selectedIndex = 0;
 	float startX = commandBox.box.getPosition().x + 10.f;
 	float startY = commandBox.box.getPosition().y + 0.f;
 
@@ -349,8 +421,9 @@ void Menu::buildCommandBox(){
 
 	if (mode == MenuMode::ItemCommand){
 		commandBox.entries.push_back(makeText("Use/Equip", startX, startY + 0 * commandBox.rowHeight));
-		commandBox.entries.push_back(makeText("Discard", startX, startY + 1 * commandBox.rowHeight));
-		commandBox.entries.push_back(makeText("Back", startX, startY + 2 * commandBox.rowHeight));
+		commandBox.entries.push_back(makeText("Give", startX, startY + 1 * commandBox.rowHeight));
+		commandBox.entries.push_back(makeText("Discard", startX, startY + 2 * commandBox.rowHeight));
+		commandBox.entries.push_back(makeText("Back", startX, startY + 3 * commandBox.rowHeight));
 	}
 
 
@@ -370,6 +443,7 @@ void Menu::buildPartyBox() {
 	partyBox.rowHeight = 30.f;
 	
 	partyBox.entries.clear();
+	partyBox.selectedIndex = 0;
 	int playerIndex = 0;
 
 	for (auto& actor : player->getCrew()) {
@@ -382,6 +456,47 @@ void Menu::buildPartyBox() {
 		partyBox.entries.push_back(t);
 		playerIndex++;
 	}	
+}
+
+void Menu::buildReceiverPartyBox() {
+	receiverPartyBox.setSize(250.f, 300.f);
+	receiverPartyBox.box.setFillColor(sf::Color::Black);
+	receiverPartyBox.box.setOutlineThickness(2.f);
+	receiverPartyBox.box.setOutlineColor(sf::Color::Blue);
+	receiverPartyBox.box.setPosition(275.f, 200.f);
+
+	textWindow.setSize({ 500.f, 50.f });
+	textWindow.setFillColor(sf::Color::Black);
+	textWindow.setOutlineThickness(2.f);
+	textWindow.setOutlineColor(sf::Color::Blue);
+	textWindow.setPosition(150.f, 250.f);
+	
+	makeText("Who will you give the item to?", 160.f, 260.f);
+
+	float startX = receiverPartyBox.box.getPosition().x + 10;
+	float startY = receiverPartyBox.box.getPosition().y;
+
+	//receiverPartyBox.setPosition(startX, startY);
+	receiverPartyBox.rowHeight = 30.f;
+
+	receiverPartyBox.entries.clear();
+	receiverPartyBox.selectedIndex = 0;
+	int playerIndex = 0;
+
+	receiverPartyBox.cursor.setPosition(startX , startY);
+	receiverPartyBox.cursor.setFillColor(sf::Color(255, 255, 255, 50));
+
+	for (auto& actor : player->getCrew()) {
+		//if (actor.get() == selectedActor) { playerIndex++; continue; }
+		sf::Text t;
+		t.setFont(font);
+		t.setCharacterSize(24);
+		t.setFillColor(sf::Color::White);
+		t.setString(actor->getName());
+		t.setPosition(startX + 10.f, startY + playerIndex * receiverPartyBox.rowHeight);
+		receiverPartyBox.entries.push_back(t);
+		playerIndex++;
+	}
 }
 
 void Menu::buildMenu() {

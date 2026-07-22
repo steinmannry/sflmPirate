@@ -1,12 +1,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "listBox.h"
 
 class Player;
 class Actor;
 
-enum class MenuMode{Party, Command, Item, ItemCommand, DiscardCheck};
+enum class MenuMode{Party, Command, Item, ItemCommand, DiscardCheck, ItemReceiver};
 
-struct ListBox {
+/*struct ListBox {
 	sf::RectangleShape box;
 	sf::RectangleShape cursor;
 	std::vector<sf::Text> entries;
@@ -36,7 +37,7 @@ struct ListBox {
 			window.draw(e);
 		window.draw(cursor);
 	}
-};
+};*/
 
 
 class Menu {
@@ -48,9 +49,11 @@ public:
 	void commandSelection(float py);
 	void itemSelection(float py);
 	void discardCheckSelection(float py);
+	void receiverSelection(float py);
 
 	sf::Text makeText(const std::string& s, float x, float y);
 	void buildPartyBox();
+	void buildReceiverPartyBox();
 	void buildCommandBox();	
 	void buildDiscardCheck();
 	
@@ -65,16 +68,21 @@ public:
 private:
 	Player* player;
 	Actor* selectedActor = nullptr;
+	Actor* receiverActor = nullptr;
+	float itemWeight = 0.f;
 	MenuMode mode = MenuMode::Party;	
-	int selectedItemIndex;
+	int selectedItemIndex = -1;
+	int receiverIndex = -1;
 	sf::RectangleShape menuBG;
 	ListBox partyBox;
 	ListBox commandBox;
 	ListBox inventoryBox;
 	ListBox discardCheckBox;
+	ListBox receiverPartyBox;
 	sf::Text discardCheckText;
 	sf::RectangleShape equipmentBox;
 	sf::RectangleShape itemDescription;
+	sf::RectangleShape textWindow;
 	std::vector<sf::Text> equipment;
 	sf::Font font;
 	float inputCooldown = 0.f;

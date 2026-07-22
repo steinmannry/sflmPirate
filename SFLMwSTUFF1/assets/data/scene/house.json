@@ -78,6 +78,22 @@
 				"width": 64, "height": 32
 				}
 
+			},
+
+		"oceanCorner":{
+			"texture": "oceanCorner",
+			"tileWidth": 192,
+			"tileHeight": 192,
+			"variantCount": 1,
+			"collision": false
+			},
+
+		"bridge":{
+			"texture": "bridge",
+			"tileWidth": 128,
+			"tileHeight": 96,
+			"variantCount": 1,
+			"collision": false
 			}
 		},
 
@@ -88,7 +104,9 @@
 			{ "type": "wildflowers",  "variant": 2, "x": 206,  "y": 320},
 			{ "type": "wildflowers",  "variant": 3, "x": 238,  "y": 320},
 			{ "type": "sign", "variant": 0, "x": 20, "y": 100},
-			{ "type": "largePine", "variant": 0, "x": 260, "y": 200}
+			{ "type": "largePine", "variant": 0, "x": 290, "y": 200},
+			{ "type": "oceanCorner", "variant": 0, "x": 808, "y": 808},
+			{ "type": "bridge", "variant": 0, "x": 872, "y": 860}
 	]
 			
 }

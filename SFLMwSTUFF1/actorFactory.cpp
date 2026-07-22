@@ -82,8 +82,7 @@ std::unique_ptr<Actor> ActorFactory::create(const std::string& id, AnimationLibr
 
 	for (auto& entry : data.inventory.entries) {
 		std::unique_ptr<Item> item = ItemFactory::create(Convert::itemID(entry.id));
-		item->setQuantity(entry.quantity);
-		actor->getInventory().addItem(std::move(item));
+		actor->getInventory().addItem(std::move(item), entry.quantity);
 	}
 	
 	return actor;

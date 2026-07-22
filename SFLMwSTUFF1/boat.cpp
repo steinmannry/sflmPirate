@@ -2,7 +2,7 @@
 #include <iostream>
 
 Boat::Boat(const sf::Texture& tex, Owner o, const sf::Vector2f pos, const std::string& n)
-	: PlayerPawn(), owner(o), name(n){
+	: Pawn(), owner(o), name(n){
 
 	sprite.setTexture(tex);
 	sprite.setScale(.2f, .2f);

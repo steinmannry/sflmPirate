@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include "armorType.h"
+#include "statsData.h"
 
 class Item;
 class Actor;
@@ -18,7 +19,7 @@ public:
 	Item* getFeet() const { return feet; }
 	Item* getHands() const { return hands; }
 	Item* getMisc() const { return misc; }
-	//Stats getTotalBonus() const;
+	StatsData getTotalBonus() const;
 	bool isEquipped(const Item* item) const;
 
 	std::vector<std::pair<std::string, Item*>> getEquippedList() const;

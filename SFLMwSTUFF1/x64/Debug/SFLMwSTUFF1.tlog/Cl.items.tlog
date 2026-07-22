@@ -4,8 +4,11 @@ C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\actorFactory.cpp;C:\Users\st
 C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\animationController.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\animationController.obj
 C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\animationData.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\animationData.obj
 C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\animationLibrary.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\animationLibrary.obj
+C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\battleScene.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\battleScene.obj
+C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\battleWindow.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\battleWindow.obj
 C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\boat.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\boat.obj
 C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\convert.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\convert.obj
+C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\enemyBattleController.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\enemyBattleController.obj
 C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\engine.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\engine.obj
 C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\equipment.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\equipment.obj
 C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\inventory.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\inventory.obj
@@ -19,6 +22,9 @@ C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\player.cpp;C:\Users\stein\so
 C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\scene.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\scene.obj
 C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\sceneData.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\sceneData.obj
 C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\stats.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\stats.obj
+C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\statsData.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\statsData.obj
 C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\textureManager.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\textureManager.obj
 C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\tileset.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\tileset.obj
 C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\townMap.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\townMap.obj
+C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\townScene.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\townScene.obj
+C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\turnOrderManager.cpp;C:\Users\stein\source\repos\SFLMwSTUFF1\SFLMwSTUFF1\x64\Debug\turnOrderManager.obj

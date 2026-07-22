@@ -20,6 +20,12 @@
 
 	"spawnPos": {"x": 100, "y": 900},
 
+	"enemies": [
+		{"id": "PirateCaptain", "x": 800, "y": 750},
+		{"id": "Lackey", "x": 850, "y": 800},
+		{"id": "Slacker", "x": 750, "y": 800}
+	],
+	
 	"skyGradient": {
 		"enabled": false
 	},
@@ -40,7 +46,7 @@
 			"tileWidth": 128,
 			"tileHeight": 128,
 			"variantCount": 1,
-			"collision": true
+			"collision": true,
 			"collisionBox": {
 				"left": 0, "top": 64,
 				"width": 128, "height": 64
@@ -67,11 +73,33 @@
 			"tileWidth": 64,
 			"tileHeight": 128,
 			"variantCount": 1,
-			"collision": true
+			"collision": true,
+			"collisionBox": {
+				"left": 0, "top": 96,
+				"width": 64, "height": 32
+				},
 			"eventType": "Tree",
 			"triggerType": "Command" 
+			},
+
+		"oceanCorner":{
+			"texture": "oceanCorner",
+			"tileWidth": 192,
+			"tileHeight": 192,
+			"variantCount": 1,
+			"collision": false
+			},
+
+		"bridge":{
+			"texture": "bridge",
+			"tileWidth": 128,
+			"tileHeight": 96,
+			"variantCount": 1,
+			"collision": false
 			}
 		},
+
+		
 
 		"objectInstances": [
 			{ "type": "buildings",  "variant": 0, "x": 100,  "y": 200},
@@ -80,7 +108,11 @@
 			{ "type": "wildflowers",  "variant": 2, "x": 206,  "y": 320},
 			{ "type": "wildflowers",  "variant": 3, "x": 238,  "y": 320},
 			{ "type": "sign", "variant": 0, "x": 20, "y": 100},
-			{ "type": "largePine", "variant": 0, "x": 260, "y": 200}
+			{ "type": "largePine", "variant": 0, "x": 290, "y": 200},
+			{ "type": "oceanCorner", "variant": 0, "x": 808, "y": 808},
+			{ "type": "bridge", "variant": 0, "x": 872, "y": 860}
+
+
 	]
 			
 }

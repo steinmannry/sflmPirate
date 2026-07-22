@@ -21,9 +21,14 @@ public:
 	const Item* getItem(int x) const { return items[x].get(); }
 	Item* getItem(int x) { return items[x].get(); }
 	std::vector<std::unique_ptr<Item>>& getItems() { return items; }
-	bool addItem(std::unique_ptr<Item> item);	
+	float getWeight()  { return weight; }
+	bool addItem(std::unique_ptr<Item> item, int q);	
+	std::unique_ptr<Item> extractItem(int index);
 	void removeItem(Item& item);
 	void removeItemByIndex(size_t x, size_t q);
+	void useItem(size_t x);
+	
+
 
 
 private:

@@ -24,7 +24,8 @@
 	"type": "Weapon",
 	"price": 12,
 	"weight": 3.0,
-	"attackPower": {"min": 1, "max": 5}
+	"attackPower": {"min": 1, "max": 5},
+	"range": 4.5
 	}
 
     ]	

@@ -1,14 +1,18 @@
 #pragma once
 
 struct StatsData {
-	int maxHP = 0;
-	int maxMP = 0;
-	float STR = 0;
-	float INT = 0;
-	float DEX = 0;
-	float CON = 0;
-	float CHA = 0;
-	float LUK = 0;
-	float DEF = 0;
-	float SPD = 0;
+	int maxHP = 1.f;
+	int maxMP = 1.f;
+	float STR = 1.f;
+	float INT = 1.f;
+	float DEX = 1.f;
+	float CON = 1.f;
+	float CHA = 1.f;
+	float LUK = 1.f;
+	float DEF = 0.f;
+	float SPD = 15.f;
+
+	StatsData& operator+=(const StatsData& other);
+	StatsData& operator-=(const StatsData& other);
+
 };

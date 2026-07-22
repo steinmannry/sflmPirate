@@ -1,5 +1,5 @@
 #pragma once
-#include "playerPawn.h"
+#include "pawn.h"
 #include "gameState.h"
 #include "menu.h"
 #include <vector>
@@ -19,12 +19,13 @@ public:
 	std::function<void(GameState)> requestStateChange;
 
 	void setScene(Scene* s);
-	void setActivePawn(PlayerPawn* p);
-	PlayerPawn* getActivePawn() { return activePawn; }
+	void setActivePawn(Pawn* p);
+	Pawn* getActivePawn() { return activePawn; }
 	std::vector<std::unique_ptr<Actor>>& getCrew() { return crew; }// need to return by reference to avoid copying. no copying unique pointers
 	const std::vector<std::unique_ptr<Actor>>& getCrew() const { return crew; }
+	std::vector<Actor*> getBattleCrew();
 
-	void addPawn(PlayerPawn* p);
+	void addPawn(Pawn* p);
 
 	void update(float dt);	
 	void resumeGame() { gamePaused = false; }
@@ -33,10 +34,10 @@ public:
 
 private:
 	Scene* scene;
-	PlayerPawn* activePawn;
+	Pawn* activePawn;
 	std::vector<Boat*> playerBoats;
 	std::vector<std::unique_ptr<Actor>> crew;
-	std::vector<PlayerPawn*> playerPawns; // boats and actors
+	std::vector<Pawn*> playerPawns; // boats and actors
 
 	sf::Vector2f cameraPos;
 	bool gamePaused = false;

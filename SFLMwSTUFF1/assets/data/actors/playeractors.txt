@@ -1,0 +1,53 @@
+{
+    "actors":[
+	{
+	    "id": "JaySan",
+	    "name": "Jay San",
+	    "className": "Archer",
+	    "owner": "Player",
+	    "texture": "jay",
+	    "animations": ["walkRL"],
+	    "level": 1,
+	    "stats":{
+		"maxHP": 21,
+		"maxMP": 3,	
+		"STR": 4.5,
+		"INT": 3.5,
+		"DEX": 7.8,
+		"CON": 5.1,
+		"CHA": 4,
+		"LUK": 1.1,
+		"DEF": 1,
+		"SPD": 23
+		},
+
+		"equipment": {
+		    "weapon": "ShortBow",
+		    "armor": "Tunic"
+		},
+
+	        "inventory":[
+		    {"id": "Herb", "quantity": 2},
+		    {"id": "WoodenArrows", "quantity": 25}
+		]
+	},
+
+
+	{
+	    "id": "MC",
+	    "name": "Les",
+	    "className": "Looser",
+	    "owner": "Player",
+	    "texture": "shadowman",
+	    "animations": ["walkRL"],
+	    "level": 1,
+	    "statsMode": "Random",
+	  
+		"equipment": {
+		    "weapon": "StoneDagger",
+		    "armor": "Tunic"
+		}  
+	}
+
+    ]
+}

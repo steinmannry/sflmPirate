@@ -15,8 +15,10 @@ struct ItemData{
 	StatsData stats;
 	float price = 1.f;
 	float weight = 1.f;
+	ItemEffect itemEffect;
 	int itemPower = 0;
 	AttackPower attackPower;	
+	float rangeMultiplier = 1.f;
 	ArmorType armorType = ArmorType::Unknown;
 	//Effect effect = Effect::None;
 	//StateEffect stateEffect;

@@ -36,6 +36,7 @@ private:
 	Player player;
 	std::unique_ptr<Scene> scene;
 	std::vector<std::unique_ptr<Boat>> allBoats;
+	std::vector<std::unique_ptr<Actor>> enemyGroup;
 
 	std::unique_ptr<Menu> menu;
 	sf::RenderWindow window;

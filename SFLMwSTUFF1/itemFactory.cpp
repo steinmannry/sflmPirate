@@ -22,8 +22,10 @@ std::unique_ptr<Item> ItemFactory::create(ItemID id) {
 		d.stats,
 		d.price,
 		d.weight,
+		d.itemEffect,
 		d.itemPower,
 		d.attackPower,
+		d.rangeMultiplier,
 		d.armorType
 	);
 }

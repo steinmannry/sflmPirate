@@ -1,5 +1,5 @@
 #include "scene.h"
-#include "playerPawn.h"
+#include "pawn.h"
 #include "textureManager.h"
 #include "animationLibrary.h"
 #include "townMap.h"
@@ -7,14 +7,15 @@
 
 
 Scene::Scene(TextureManager& texture, AnimationLibrary& al, const SceneData& sd)
-	: textures(texture), animations(al), skyGradient(sf::Quads, 4), groundGradient(sf::Quads, 4),
-	mapType(sd.mapType),
+	: mapType(sd.mapType), textures(texture), animations(al), 
 	objInstances(sd.objectInstances),
 	objects(sd.objects),
 	worldSize(sd.worldSize),
 	skyArea(sd.skyArea),
 	groundArea(sd.groundArea),
 	bottomOffset(sd.bottomOffset),
+	skyGradient(sf::Quads, 4),
+	groundGradient(sf::Quads, 4),
 	skyGrad(sd.skyGradient.enabled),
 	groundGrad(sd.groundGradient.enabled){
 
@@ -33,11 +34,15 @@ Scene::Scene(TextureManager& texture, AnimationLibrary& al, const SceneData& sd)
 
 }
 
-void Scene::update(float dt, PlayerPawn* p) {
+void Scene::update(float dt, Pawn* p) {
 	updateCamera(dt, p->getPos());
-	checkCollision(p);	
+	updateMovement(dt, p);
+	checkBlockingCollision(p);	
+	
 	//std::cout << "player pos x= " << p->getPos().x << "player pos y= " << p->getPos().y << "\n";
 }
+
+
 
 void Scene::updateCamera(float dt, sf::Vector2f pawnPos) {
 	sf::Vector2f target = pawnPos;
@@ -53,7 +58,7 @@ void Scene::updateCamera(float dt, sf::Vector2f pawnPos) {
 	camera.setCenter(cameraPos);
 }
 
-void Scene::draw(sf::RenderWindow& window, PlayerPawn* p) {
+void Scene::draw(sf::RenderWindow& window, Pawn* p) {
 	window.setView(camera);
 	if (skyGrad)
 		window.draw(skyGradient);
@@ -74,8 +79,10 @@ void Scene::buildMap() {
 		break;
 
 	case MapType::Town:
+		map = std::make_unique<TownMap>(objectSprites, objInstances, objects);		
+		break;
+	case MapType::Battle:
 		map = std::make_unique<TownMap>(objectSprites, objInstances, objects);
-		
 		break;
 	}
 }
@@ -115,39 +122,31 @@ void Scene::buildObjects() {
 	}
 }
 
-void Scene::onEnter(PlayerPawn* p, sf::Vector2f& pos) {
+void Scene::onEnter(Pawn* p, sf::Vector2f& pos) {
 	p->setWorldBounds(groundArea);
 	p->setPos(pos);
-	cameraPos = p->getPos();
+	cameraPos = p->getPos();//
 }
 
-bool Scene::checkCollision(PlayerPawn* p) {
+bool Scene::checkBlockingCollision(Pawn* p) {
 	if (!map) return false;
 	sf::FloatRect pawnBounds = p->pawnBounds();
 
 	const auto& sprites = map->getObjSprites();
 	const auto& instances = map->getObjectInstances();
 	const auto& types = map->getObjectData();
-	
+
 	for (size_t i = 0; i < sprites.size(); ++i) {
 		const auto& inst = instances[i];
 		const auto& type = types.at(inst.type);
 		const auto& sprite = sprites[i];
-
-
 		
-		sf::FloatRect objBounds = type.collisionBox;
+		sf::FloatRect objBounds = type.collisionBox;	
 		objBounds.left += inst.x;
 		objBounds.top += inst.y;
 
 		if (!pawnBounds.intersects(objBounds))
 			continue;
-
-		if (type.eventType == EventType::SceneChange) {
-			if (!type.targetScene.empty())
-				pendingScene = type.targetScene;
-			//requestSceneChange(type.targetScene);				
-		}
 	
 		if (type.collision) {		
 			
@@ -158,6 +157,10 @@ bool Scene::checkCollision(PlayerPawn* p) {
 
 	//probably want to split this function into 2.  check blocking collision and check trigger collision.
 }
+
+
+
+
 
 /*
 void Scene::buildTilesets(const SceneData& sd) {

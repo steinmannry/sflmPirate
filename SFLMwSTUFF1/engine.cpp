@@ -1,5 +1,7 @@
 #include "engine.h"
 #include "scene.h"
+#include "townScene.h"
+#include "battleScene.h"
 #include "sceneData.h"
 #include "jsonLoader.h"
 #include "itemFactory.h"
@@ -33,13 +35,9 @@ Engine::Engine()
 
 	allActors.emplace_back(std::make_unique<Actor>(
 		animationLibrary, textures.get("shadowman")));*/	
-	
-	
 
-	loadScene("house.json");
-	
-	
-	
+	loadScene("houseBattle.json");
+		
 
 	/*std::ifstream file("assets/scenes/over_world.json");
 	if (!file.is_open()) {
@@ -59,10 +57,13 @@ void Engine::init() {
 	json consumableJson = JsonLoader::load("assets/data/items/consumable.json");
 	json actorJson = JsonLoader::load("assets/data/actors/actors.json");
 	
+	
 	ItemFactory::loadDatabase(weaponsJson);
 	ItemFactory::loadDatabase(armorJson);
 	ItemFactory::loadDatabase(consumableJson);
 	ActorFactory::loadDatabase(actorJson);
+	
+
 }
 
 void Engine::loadTextures() {
@@ -72,6 +73,8 @@ void Engine::loadTextures() {
 	textures.load("wildflowers", "wildflowers.png");	
 	textures.load("sign", "sign.png");	
 	textures.load("largePine", "largePine.png");
+	textures.load("bridge", "bridge.png");
+	textures.load("oceanCorner", "oceanCorner.png");
 
 	textures.load("shadowman", "shadowman.png");
 	textures.load("jay", "archee.png");
@@ -81,8 +84,14 @@ void Engine::loadScene(const std::string& path) {
 
 	json j = JsonLoader::load("assets/data/scene/" + path);
 	SceneData data = SceneData::fromJson(j);
-
-	scene = std::make_unique<Scene>(textures, animationLibrary, data);
+	switch (data.mapType) {
+	case MapType::Town:
+		scene = std::make_unique<TownScene>(textures, animationLibrary, data);
+		break;
+	case MapType::Battle:
+		scene = std::make_unique<BattleScene>(textures, animationLibrary, data);
+		break;
+	}
 	scene->buildMap();
 
 	scene->requestSceneChange = [this](const std::string& path) {
@@ -94,10 +103,19 @@ void Engine::loadScene(const std::string& path) {
 	//player.getActivePawn()->update()
 	
 	scene->onEnter(player.getActivePawn(), data.spawnPos);
-	//player.getActivePawn()->getSprite().setPosition(data.spawnPos);
 	
-
-	std::cout << data.sceneName << " " << data.spawnPos.x << data.spawnPos.y << "\n";
+	if (data.mapType == MapType::Battle) {
+		enemyGroup.clear();
+		std::vector<Actor*> baddies;
+		for (auto& spawn : data.enemies) {	
+			std::unique_ptr<Actor> enemy = ActorFactory::create(spawn.id, animationLibrary, textures);
+			enemy->setPos(spawn.position);
+			baddies.push_back(enemy.get());
+		}
+		
+		scene->onBattleEnter(player.getBattleCrew(), data.spawnPos, baddies);
+	}
+	
 }
 
 void Engine::run() {
@@ -115,14 +133,14 @@ void Engine::run() {
 	}
 }
 
-void Engine::update(float dt) {	
+void Engine::update(float dt) {
 
 	if (state == GameState::Menu) {
 		menu->update(dt);
 		if (menu->getCloseRequest()) {
 			menu->closeRequestFalse();
 			player.resumeGame();
-			state = GameState::Game;			
+			state = GameState::Game;
 		}
 	}
 
@@ -137,9 +155,8 @@ void Engine::update(float dt) {
 		}
 		player.requestStateChange = [&](GameState s) {
 			state = s;
-		};
-
-	}	
+			};
+	}
 }
 
 void Engine::draw() {

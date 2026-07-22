@@ -1,12 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "playerPawn.h"
+#include "pawn.h"
 //#include "area.h"
 
-enum class Owner { Player, Enemy };
 
 
-class Boat : public PlayerPawn {
+
+class Boat : public Pawn {
 public:
 	Boat(const sf::Texture& tex, Owner o, const sf::Vector2f pos, const std::string& n);
 	void update(float dt);

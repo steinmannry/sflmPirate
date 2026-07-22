@@ -25,16 +25,22 @@ ItemData ItemData::fromJson(const json& j) {
 
 		data.price = j.value("price", 0.f);
 		data.weight = j.value("weight", .1f);
-		data.itemPower = j.value("itemPower", 0.f);
 
+		if (j.contains("itemEffect")) {
+			data.itemEffect = Convert::itemEffect(j["itemEffect"]);
+			data.itemPower = j.value("itemPower", 0.f);
+		}
 
 		if (j.contains("attackPower")) {
 			data.attackPower.minDamage = j["attackPower"]["min"];
 			data.attackPower.maxDamage = j["attackPower"]["max"];
 		}
 
-		data.armorType = Convert::armorType(j.value("armorType", "Misc"));
+		if (j.contains("range")) {
+			data.rangeMultiplier = j["range"];
+		}
 
+		data.armorType = Convert::armorType(j.value("armorType", "Misc"));
 		
 	}
 	catch (const std::exception& e) {

@@ -25,13 +25,13 @@ void Stats::rollStats() {
 	maxHP = Random::get(10, 25);
 	maxMP = Random::get(3, 20);
 
-	STR = Random::get(1.0f, 8.0f);	
+	STR = Random::get(2.0f, 8.0f);	
 	INT = Random::get(1.0f, 8.0f);	
-	DEX = Random::get(1.0f, 8.0f);
-	CON = Random::get(1.0f, 8.0f);
+	DEX = Random::get(3.0f, 8.0f);
+	CON = Random::get(3.0f, 8.0f);
 	CHA = Random::get(3.0f, 12.0f);
-	LUK = Random::get(1.0f, 1.5f);
-	SPD = Random::get(15.f, 25.f);
+	LUK = Random::get(1.0f, 2.0f);
+	SPD = Random::get(20.f, 30.f);
 }
 
 void Stats::adjustStats() {

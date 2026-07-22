@@ -41,6 +41,13 @@ struct GradientData {
 	sf::Color bottomRight;
 };
 
+struct BattleSpawn {
+	std::string id;
+	sf::Vector2f position;
+	//ai type
+	//float angle (for boat)
+};
+
 struct SceneData {
 	std::string sceneName;
 	MapType mapType;
@@ -51,6 +58,7 @@ struct SceneData {
 	GradientData skyGradient;
 	GradientData groundGradient;
 	sf::Vector2f spawnPos;
+	std::vector<BattleSpawn> enemies;
 
 	//std::unordered_map<std::string, TilesetInfo> tilesets;
 

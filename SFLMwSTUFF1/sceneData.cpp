@@ -17,6 +17,16 @@ SceneData SceneData::fromJson(const json& j) {
 			data.spawnPos.y = j["spawnPos"]["y"];
 		}
 
+		if (j.contains("enemies")) {
+			for (auto& s : j["enemies"]) {
+				BattleSpawn bs;
+				bs.id = s["id"];
+				bs.position.x = s["x"];
+				bs.position.y = s["y"];
+				data.enemies.push_back(bs);
+			}
+		}
+
 		if (j.contains("skyGradient")) {
 			const auto& sg = j["skyGradient"];
 			data.skyGradient.enabled = sg.value("enabled", false);
@@ -81,7 +91,7 @@ SceneData SceneData::fromJson(const json& j) {
 					);
 				}
 				info.eventType = parseEventType(obj.value("eventType", "None"));
-				info.trigger = parseTriggerType(obj.value("trigger", "proximity"));
+				info.trigger = parseTriggerType(obj.value("triggerType", "Proximity"));
 				info.targetScene = obj.value("targetScene", "");
 				data.objects[key] = info;
 			}

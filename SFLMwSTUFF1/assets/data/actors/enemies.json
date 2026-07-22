@@ -1,0 +1,100 @@
+{
+    "actors":[
+	{
+	    "id": "PirateCaptian",
+	    "name": "Gerald",
+	    "className": "Pirate",
+	    "owner": "Enemy",
+	    "texture": "shadowman",
+	    "animations": ["walkRL"],
+	    "level": 2,
+	    "stats":{
+		"maxHP": 28,
+		"maxMP": 3,	
+		"STR": 4.5,
+		"INT": 3,
+		"DEX": 5.8,
+		"CON": 5.2,
+		"CHA": 2,
+		"LUK": 1.1,
+		"DEF": 1,
+		"SPD": 20
+		},
+
+		"equipment": {
+		    "weapon": "IronDagger",
+		    "armor": "Tunic"
+		},
+
+	        "inventory":[
+		    {"id": "Herb", "quantity": 1}
+		]
+
+	},
+
+	{
+	    "id": "Lackey",
+	    "name": "Fred",
+	    "className": "Pirate",
+	    "owner": "Enemy",
+	    "texture": "shadowman",
+	    "animations": ["walkRL"],
+	    "level": 1,
+	    "stats":{
+		"maxHP": 21,
+		"maxMP": 3,	
+		"STR": 4.2,
+		"INT": 3,
+		"DEX": 5.1,
+		"CON": 5.7,
+		"CHA": 2,
+		"LUK": 1.1,
+		"DEF": 1,
+		"SPD": 18
+		},
+
+		"equipment": {
+		    "weapon": "StoneDagger",
+		    "armor": "Tunic"
+		},
+
+	        "inventory":[
+		    {"id": "Herb", "quantity": 1}
+		]
+	},
+
+	
+	{
+	    "id": "Slacker",
+	    "name": "Bevis",
+	    "className": "Pirate",
+	    "owner": "Enemy",
+	    "texture": "shadowman",
+	    "animations": ["walkRL"],
+	    "level": 1,
+	    "stats":{
+		"maxHP": 25,
+		"maxMP": 6,	
+		"STR": 3.7,
+		"INT": 3.6,
+		"DEX": 6.1,
+		"CON": 5.1,
+		"CHA": 2,
+		"LUK": 1.1,
+		"DEF": 1,
+		"SPD": 21
+		},
+
+		"equipment": {
+		    "weapon": "StoneDagger",
+		    "armor": "Tunic"
+		},
+
+	        "inventory":[
+		    {"id": "Herb", "quantity": 1}
+		]
+	}
+
+
+	]
+}
